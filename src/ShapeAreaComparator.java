@@ -40,18 +40,7 @@ public class ShapeAreaComparator implements Comparator<Shape>
 		{
 			return 1;
 		}
-		else
-		{
-			if(s1.getPerimeter()>s2.getPerimeter())
-			{
-				return -1;
-			}
-			if(s1.getPerimeter()<s2.getPerimeter())
-			{
-				return 1;
-			}
 			return 0;
-		}
 	}
 
 	/**
@@ -64,7 +53,6 @@ public class ShapeAreaComparator implements Comparator<Shape>
 	 */
 	public boolean equals(Shape s1, Shape s2)
 	{
-		if(this.compare(s1, s2) == 0) {return true;}
-		return false;
+		return (this.compare(s1, s2) == 0);
 	}
 }
