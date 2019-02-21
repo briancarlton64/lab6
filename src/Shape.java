@@ -101,7 +101,7 @@ public abstract class Shape implements Comparable<Shape>
 		}
 		if(this.getArea()>s.getArea())
 		{
-			return 1;
+			return -1;
 		}
 		else
 		{
