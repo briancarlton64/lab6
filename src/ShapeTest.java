@@ -117,10 +117,10 @@ public class ShapeTest
 	public void ShapeToStringTest()
 	{
 		Shape circ = new Circle("Circle1", 3.0);
-		Assert.assertEquals("Circle toString incorrect.", "Circle\t ID = Circle1\t area = "+3*3*Math.PI+"\t perimeter = "+3*2*Math.PI, circ.toString());
+		Assert.assertEquals("Circle toString incorrect.", "Circle\t ID = Circle1\t area = "+String.format("%.3f", (3*3*Math.PI))+"\t perimeter = "+String.format("%.3f", (3*2*Math.PI)), circ.toString());
  
 		Shape sqr = new Square("Square1", 3.0);
-		Assert.assertEquals("Squre toString incorrect.", "Square\t ID = Square1\t area = "+9.0+"\t perimeter = "+12.0, sqr.toString());
+		Assert.assertEquals("Squre toString incorrect.", "Square\t ID = Square1\t area = 9.000\t perimeter = 12.000", sqr.toString());
 
 	}
 
@@ -184,13 +184,16 @@ public class ShapeTest
 		Shape c = new Circle("Circle3",3);
 		Shape d = new Circle("Circle4",3);
 		Assert.assertEquals("Incorrect natural comparision", 0, c.compareTo(d));
+		Assert.assertEquals("Incorrect natural comparision", 0, d.compareTo(c));
 		
-		Shape e = new Rectangle("Rectangle1",3,4);
-		Shape f = new Square("Square1",Math.sqrt(12));
-		Assert.assertEquals("Incorrect natural comparision", 1, e.compareTo(f));    
+		Shape e = new Rectangle("Rectangle1",4,4);
+		Shape f = new Rectangle("Rectangle1",8,2);
+		Assert.assertEquals("Incorrect natural comparision", -1, e.compareTo(f)); 
+		Assert.assertEquals("Incorrect natural comparision", 1, f.compareTo(e)); 
 		Shape g = new Rectangle("Rectangle1",3,4);
 		Shape h = new Rectangle("Rectangle1",3,4);
 		Assert.assertEquals("Incorrect natural comparision", 0, g.compareTo(h));    
+		Assert.assertEquals("Incorrect natural comparision", 0, h.compareTo(g)); 
 
     }
 }

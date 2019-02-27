@@ -1,3 +1,5 @@
+
+
 /**
  * Lab 6
  *
@@ -147,6 +149,7 @@ public abstract class Shape implements Comparable<Shape>
 	@Override
 	public String toString()
 	{
-		return this.getShapeType()+"\t ID = "+this.getId()+"\t area = "+this.getArea()+"\t perimeter = " +this.getPerimeter();
+		
+		return this.getShapeType()+"\t ID = "+this.getId()+"\t area = "+String.format("%.3f", (this.getArea()))+"\t perimeter = " +String.format("%.3f", (this.getPerimeter()));
 	}
 }
