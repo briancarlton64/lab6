@@ -25,6 +25,11 @@ public class ShapeTest
 		Assert.assertEquals("Square perimeter incorrect.", 12.0, sqr.getPerimeter(), 0.0001);
 		Assert.assertEquals("Square type incorrect.", "Square", sqr.getShapeType());
 		Assert.assertEquals("Shape ID incorrect.", "Square1", sqr.getId());
+		Shape sqr1 = new Square("Square1", 3.0, 3.0);
+		Assert.assertEquals("Square area incorrect.", 9.0, sqr1.getArea(), 0.0001);
+		Assert.assertEquals("Square perimeter incorrect.", 12.0, sqr1.getPerimeter(), 0.0001);
+		Assert.assertEquals("Square type incorrect.", "Square", sqr1.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Square1", sqr1.getId());
 	}
 
 	/**
@@ -33,7 +38,11 @@ public class ShapeTest
 	@Test
 	public void RectangleTest()
 	{
-		// TODO: complete this...
+		Shape sqr = new Rectangle("Rectangle1", 3.0, 4);
+		Assert.assertEquals("Rectangle area incorrect.", 12, sqr.getArea(), 0.0001);
+		Assert.assertEquals("Rectangle perimeter incorrect.", 14, sqr.getPerimeter(), 0.0001);
+		Assert.assertEquals("Rectangle type incorrect.", "Rectangle", sqr.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Rectangle1", sqr.getId());
 	}
 
 	/**
@@ -42,8 +51,11 @@ public class ShapeTest
 	@Test
 	public void TriangleTest()
 	{
-		// TODO: complete this...
-	}
+		Shape sqr = new EquilateralTriangle("Triangle1", 4);
+		Assert.assertEquals("Triangle area incorrect.", 16*Math.sqrt(3)/4, sqr.getArea(), 0.0001);
+		Assert.assertEquals("Triangle perimeter incorrect.", 12, sqr.getPerimeter(), 0.0001);
+		Assert.assertEquals("Triangle type incorrect.", "EquilateralTriangle", sqr.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Triangle1", sqr.getId());	}
 
 	/**
      * Tests for the trapezoid class. Also test that IDs are done correctly.
@@ -51,8 +63,12 @@ public class ShapeTest
 	@Test
 	public void TrapezoidTest()
 	{
-		// TODO: complete this...
-	}
+		Shape sqr = new Trapezoid("Trapezoid1", 1,1,4,5);
+		Assert.assertEquals("Trapezoid area incorrect.", 3.8971143, sqr.getArea(), 0.0001);
+		Assert.assertEquals("Trapezoid perimeter incorrect.", 11, sqr.getPerimeter(), 0.0001);
+		Assert.assertEquals("Trapezoid type incorrect.", "Trapezoid", sqr.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Trapezoid1", sqr.getId());	
+		}
 
 	/**
      * Tests for the ellipse class. Also test that IDs are done correctly.
@@ -67,6 +83,8 @@ public class ShapeTest
 				circ.getPerimeter(),0.0001);
 		Assert.assertEquals("Ellipse type incorrect.", "Ellipse",circ.getShapeType());
 		Assert.assertEquals("Shape ID incorrect.", "Ellipse1", circ.getId());
+		Assert.assertEquals("Ellipse major axis incorrect.", 3.0, ((Ellipse) circ).getMajorAxis(),0.0001);
+
 
 		Shape circs = new Ellipse("Ellipse2", 5.0, 3.0);
 		Assert.assertEquals("Ellipse area incorrect.", Math.PI*3*5, circs.getArea(),0.0001);
@@ -83,7 +101,13 @@ public class ShapeTest
 	@Test
 	public void CircleTest()
 	{
-		// TODO: complete this...
+		Shape circ = new Circle("Circle1", 3.0);
+		Assert.assertEquals("Circle area incorrect.", Math.PI*3.0*3.0, circ.getArea(),0.0001);
+		Assert.assertEquals("Circle perimeter incorrect.",
+				2 * Math.PI *3,
+				circ.getPerimeter(),0.0001);
+		Assert.assertEquals("Circle type incorrect.", "Circle",circ.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Circle1", circ.getId());
 	}
 
 	/**
@@ -92,7 +116,12 @@ public class ShapeTest
 	@Test
 	public void ShapeToStringTest()
 	{
-		// TODO: complete this...
+		Shape circ = new Circle("Circle1", 3.0);
+		Assert.assertEquals("Circle toString incorrect.", "Circle\t ID = Circle1\t area = "+3*3*Math.PI+"\t perimeter = "+3*2*Math.PI, circ.toString());
+ 
+		Shape sqr = new Square("Square1", 3.0);
+		Assert.assertEquals("Squre toString incorrect.", "Square\t ID = Square1\t area = "+9.0+"\t perimeter = "+12.0, sqr.toString());
+
 	}
 
 	//==================================================================================================================
@@ -130,7 +159,15 @@ public class ShapeTest
 	@Test
 	public void ComparePerimeterTest()
 	{
-		// TODO: complete this...
+		Shape a = new Circle("Circle1",3);
+		Shape b = new Circle("Circle1",4);
+		ShapePerimeterComparator com = new ShapePerimeterComparator();
+		Assert.assertEquals("Incorrect perimeter comparision", -1, com.compare(a, b));
+		Assert.assertEquals("Incorrect perimeter comparision", 1, com.compare(b, a));
+
+		Shape c = new Circle("Circle1",3);
+		Shape d = new Circle("Circle1",3);
+		Assert.assertEquals("Incorrect perimeter comparision", 0, com.compare(c, d));
 	}
 
 	/**
@@ -139,6 +176,12 @@ public class ShapeTest
 	@Test
     public void NaturalCompareTest()
     {
-		// TODO: complete this...
-    }
+		Shape a = new Circle("Circle1",3);
+		Shape b = new Circle("Circle1",4);
+		Assert.assertEquals("Incorrect perimeter comparision", -1,a.compareTo(b));
+		Assert.assertEquals("Incorrect perimeter comparision", 1, com.compare(b, a));
+
+		Shape c = new Circle("Circle1",3);
+		Shape d = new Circle("Circle1",3);
+		Assert.assertEquals("Incorrect perimeter comparision", 0, com.compare(c, d));    }
 }

@@ -24,6 +24,10 @@ public class EquilateralTriangle extends Polygon
 		super(id);
 		this.sideLength = sideLength;
 		sideLengths.add(sideLength);
+		sideLengths.add(sideLength);
+
+		sideLengths.add(sideLength);
+
 	}
 
 	/**
