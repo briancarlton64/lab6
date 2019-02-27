@@ -177,11 +177,20 @@ public class ShapeTest
     public void NaturalCompareTest()
     {
 		Shape a = new Circle("Circle1",3);
-		Shape b = new Circle("Circle1",4);
-		Assert.assertEquals("Incorrect perimeter comparision", -1,a.compareTo(b));
-		Assert.assertEquals("Incorrect perimeter comparision", 1, com.compare(b, a));
+		Shape b = new Circle("Circle2",4);
+		Assert.assertEquals("Incorrect natural comparision", -1,a.compareTo(b));
+		Assert.assertEquals("Incorrect natural comparision", 1, b.compareTo(a));
 
-		Shape c = new Circle("Circle1",3);
-		Shape d = new Circle("Circle1",3);
-		Assert.assertEquals("Incorrect perimeter comparision", 0, com.compare(c, d));    }
+		Shape c = new Circle("Circle3",3);
+		Shape d = new Circle("Circle4",3);
+		Assert.assertEquals("Incorrect natural comparision", 0, c.compareTo(d));
+		
+		Shape e = new Rectangle("Rectangle1",3,4);
+		Shape f = new Square("Square1",Math.sqrt(12));
+		Assert.assertEquals("Incorrect natural comparision", 1, e.compareTo(f));    
+		Shape g = new Rectangle("Rectangle1",3,4);
+		Shape h = new Rectangle("Rectangle1",3,4);
+		Assert.assertEquals("Incorrect natural comparision", 0, g.compareTo(h));    
+
+    }
 }

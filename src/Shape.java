@@ -97,14 +97,13 @@ public abstract class Shape implements Comparable<Shape>
 	{
 		if(this.getArea()<s.getArea())
 		{
-			return 1;
+			return -1;
 		}
 		if(this.getArea()>s.getArea())
 		{
-			return -1;
+			return 1;
 		}
-		else
-		{
+		
 			if(this.getPerimeter()>s.getPerimeter())
 			{
 				return 1;
@@ -114,7 +113,6 @@ public abstract class Shape implements Comparable<Shape>
 				return -1;
 			}
 			return 0;
-		}
 		
 	}
 
